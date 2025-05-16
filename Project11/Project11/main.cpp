@@ -46,14 +46,26 @@ static void build_data(void)
     for (int c = 1; c < 10; c++) sp[c] = 0;
     qs = 0;
 }
+// 큐 출력 함수
+void print_queue(void)
+{
+    for (int i = 0; i < qs; i++) {
+        printf("%d ", queue[i]);
+        if ((i + 1) % 20 == 0) printf("\n"); // 20개마다 줄바꿈 (가독성)
+    }
+    printf("\n");
+}
 
 int main(void)
 {
     SCORE = 0;
-    for (int c = 0; c < 10; c++)
-    {
+    srand(1); // 랜덤 시드 고정
+    for (int c = 0; c < 10; c++) {
         build_data();
         test_main();
     }
-    printf("SCORE = %d\n", SCORE);
+    printf("SCORE = %lld\n", SCORE);
+
+    // ⭐ 큐 출력 추가
+    print_queue(); 
 }
